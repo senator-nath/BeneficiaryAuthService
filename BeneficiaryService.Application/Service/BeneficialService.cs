@@ -84,7 +84,7 @@ namespace BeneficiaryService.Application.Service
 
         public async Task<PaginatedBeneficiaryResponseDto> GetByAccountNumberAsync(string accountNumber, int pageNumber, int pageSize)
         {
-            // Validate input
+
             if (string.IsNullOrWhiteSpace(accountNumber))
             {
                 return new PaginatedBeneficiaryResponseDto
@@ -141,10 +141,9 @@ namespace BeneficiaryService.Application.Service
                 throw new KeyNotFoundException("Beneficiary not found");
             }
 
-            beneficiary.BeneficiaryName = request.BeneficiaryName ?? beneficiary.BeneficiaryName;
-
-            beneficiary.BenefactorNickname = request.BenefactorNickname ?? beneficiary.BenefactorNickname;
-            beneficiary.BenefactorAccountNumber = request.BenefactorAccountNumber ?? beneficiary.BenefactorAccountNumber;
+            beneficiary.BeneficiaryName = request.BeneficiaryName;
+            beneficiary.BenefactorNickname = request.BenefactorNickname;
+            beneficiary.BenefactorAccountNumber = request.BenefactorAccountNumber;
             beneficiary.DateUpdated = DateTime.UtcNow;
 
             _unitOfWork.beneficiary.Update(beneficiary);

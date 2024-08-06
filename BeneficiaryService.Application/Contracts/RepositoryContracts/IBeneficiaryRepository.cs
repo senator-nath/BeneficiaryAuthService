@@ -10,5 +10,6 @@ namespace BeneficiaryService.Application.RepositoryContracts
     public interface IBeneficiaryRepository : IGenericRepository<Beneficiary>
     {
         Task<(IEnumerable<Beneficiary> Items, int TotalCount)> GetByAccountNumberAsync(string accountNumber, int pageNumber, int pageSize);
+
     }
 }

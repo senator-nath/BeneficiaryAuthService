@@ -11,4 +11,6 @@ namespace BeneficiaryService.Application.RepositoryContracts
         IBeneficiaryRepository beneficiary { get; }
         Task<int> SaveAsync();
     }
+
+    
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Razor.Chunks.Generators;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
@@ -9,9 +10,6 @@ namespace BeneficiaryService.Application.RepositoryContracts
 {
     public interface IGenericRepository<T> where T : class
     {
-
-
-        Task<IReadOnlyList<T>> GetAsync();
 
         Task<T> GetByIdAsync(Expression<Func<T, bool>> predicate);
 
@@ -24,4 +22,5 @@ namespace BeneficiaryService.Application.RepositoryContracts
         Task<IEnumerable<T>> GetWhere(Expression<Func<T, bool>> predicate);
 
     }
+
 }
