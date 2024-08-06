@@ -22,6 +22,6 @@ namespace BeneficiaryService.Application.RepositoryContracts
         void Delete(T entity);
 
         Task<IEnumerable<T>> GetWhere(Expression<Func<T, bool>> predicate);
-        Task<(IEnumerable<T> Items, int TotalCount)> GetPagedAsync(Expression<Func<T, bool>> predicate, int pageNumber, int pageSize);
+
     }
 }
