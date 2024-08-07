@@ -10,6 +10,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using BeneficiaryService.API;
 using BeneficiaryService.Application;
+using FluentValidation;
+using BeneficiaryService.Application.Validator;
 public class Program
 {
     public static void Main(string[] args)
@@ -27,8 +29,7 @@ public class Program
             .WriteTo.File("logs/log.txt", rollingInterval: RollingInterval.Day)
             .CreateLogger();
 
-        //try
-        //{
+
         Log.Information("Starting up the host");
         var builder = WebApplication.CreateBuilder(args);
 
@@ -42,6 +43,7 @@ public class Program
         builder.Services.AddPersistenceService(builder.Configuration);
         builder.Services.AddApplicationService();
         builder.Services.AddScoped<JwtTokenValidationAttribute>();
+        builder.Services.AddValidatorsFromAssemblyContaining<BeneficiaryRequestValidator>();
 
         var app = builder.Build();
 
@@ -59,14 +61,6 @@ public class Program
         app.MapControllers();
 
         app.Run();
-        //}
-        //catch (Exception ex)
-        //{
-        //    Log.Information(ex, "Host terminated unexpectedly");
-        //}
-        //finally
-        //{
-        //    Log.CloseAndFlush();
-        //}
+
     }
 }

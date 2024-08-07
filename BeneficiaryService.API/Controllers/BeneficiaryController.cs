@@ -20,7 +20,7 @@ namespace BeneficiaryService.API.Controllers
             //_jwtTokenValidation = jwtTokenValidation;
         }
         [HttpPost("create")]
-        [ServiceFilter(typeof(JwtTokenValidationAttribute))]
+        // [ServiceFilter(typeof(JwtTokenValidationAttribute))]
         public async Task<IActionResult> CreateBeneficiaryAsync([FromBody] BeneficiaryRequestDto request)
         {
             //var token = Request.Headers["Authorization"].ToString().Replace("Bearer ", "");

@@ -1,5 +1,6 @@
 ﻿using BeneficiaryService.Application.Service;
 using BeneficiaryService.Application.ServiceContract;
+using BeneficiaryService.Application.Validator;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
@@ -14,6 +15,7 @@ namespace BeneficiaryService.Application
         public static IServiceCollection AddApplicationService(this IServiceCollection services)
         {
             services.AddScoped<IBeneficiaryService, BeneficialService>();
+
             return services;
         }
     }
